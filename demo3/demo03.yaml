@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo03
+  labels:
+    app: demo03
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo03
+  template:
+    metadata:
+      name: demo03
+      labels:
+        app: demo03
+    spec:
+      containers:
+        - name: demo03
+          image: nginx
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
