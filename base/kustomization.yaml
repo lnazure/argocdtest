@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - demo1/demo01.yaml
+  - demo1/demo01svc.yaml
+  - demo2/demo02.yaml
+  - demo3/demo03.yaml
+patchesStrategicMerge:
+  - demo1/patch01.yaml
+  - demo1/patch02.yaml
+images:
+  - name: demo01image
+    newName: nginx
+    newTag: latest
+vars:
+  - name: MY_SVC
+    objref:
+      apiVersion: v1
+      kind: Service
+      name: demo01-svc

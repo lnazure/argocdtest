@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: demo01
-          image: nginx
+          image: demo01image
           imagePullPolicy: IfNotPresent
       restartPolicy: Always

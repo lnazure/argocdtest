@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo01
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+        - name: demo01
+          resources:
+            limits:
+              memory: 512Mi
