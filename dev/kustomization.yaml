@@ -1,4 +1,5 @@
 resources:
 - ../base
+#- ns.yaml
 namePrefix: dev-
-namespace: dev
+#namespace: dev
