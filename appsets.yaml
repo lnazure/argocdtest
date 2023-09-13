@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: test
+spec:
+  generators:
+  - list:
+      elements:
+      - path: demo1
+        namespace: test1
+      - path: demo2
+        namespace: test1
+      - path: demo3
+        namespace: test3
+  template:
+    metadata:
+      name: '{{path}}-{{namespace}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/lnazure/argocdtest.git
+        targetRevision: appsets
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.docker.internal:6443
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+
+
+
